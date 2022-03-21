@@ -11,7 +11,6 @@ clc
 % 1- topography
 data = load('MOLA_topo_180*360.mat'); 
 topo = data.h*1e3;
-root = rho_c/d_rho*topo; % calculate the root from Airy's isostasy
 
 % 2- Effective Elastic thickness of lithosphere[km]
 Te = 120e3;      % influence the effects of the flexural repsonse function
@@ -31,8 +30,8 @@ g = 3.711;      % m/s^2
 R = 3389.5e3;   % radius in [m]
 D = E*Te^3/(12*(1-v^2)); % Flexural rigidity
 
-
-
+% calculate the root from Airy's isostasy
+root = rho_c/d_rho*topo; 
 %% Run GSHA (Analysis)
 tic;   
 % Clm & Slm in |C\S| format [matrix]
